@@ -22,14 +22,14 @@ async def get_all_carts():
 
 @cart_api.get('/carts/{id}', response_model=schemas.carts_res)
 async def get_carts_by_id(id: str):
-    try:
-        ObjectId(id)
+    # try:
+    #     ObjectId(id)
 
-    except Exception as e:
-        raise HTTPException(status_code=400, detail=f'Provided id: {id} is a primary key !.')
+    # except Exception as e:
+    #     raise HTTPException(status_code=400, detail=f'Provided id: {id} is a primary key !.')
 
     res = await CARTS.find_one({
-        '_id' : ObjectId(id)
+        '_id' : id
     })
     
     if not res:
@@ -56,15 +56,15 @@ async def create_carts(data: schemas.carts_req):
 async def create_carts(data: schemas.carts_req, id: str):
     inp_data = data.model_dump(exclude_unset=True)
 
-    try:
-        ObjectId(id)
+    # try:
+    #     ObjectId(id)
 
-    except Exception as e:
-        raise HTTPException(status_code=400, detail=f'Provided id: {id} is a primary key !.')
+    # except Exception as e:
+    #     raise HTTPException(status_code=400, detail=f'Provided id: {id} is a primary key !.')
 
 
     res = await CARTS.find_one_and_update(
-        {'_id':ObjectId(id)},
+        {'_id' : id},
         {'$set': inp_data}
     )
 
@@ -79,13 +79,13 @@ async def create_carts(data: schemas.carts_req, id: str):
 
 @cart_api.delete('/carts/{id}')
 async def delete_carts(id: str):
-    try:
-        ObjectId(id)
+    # try:
+    #     ObjectId(id)
 
-    except Exception as e:
-        raise HTTPException(status_code=400, detail=f'Provided id: {id} is a primary key !.')
+    # except Exception as e:
+    #     raise HTTPException(status_code=400, detail=f'Provided id: {id} is a primary key !.')
     
-    res = await CARTS.delete_one({'_id':ObjectId(id)})
+    res = await CARTS.delete_one({'_id' : id})
 
     if not res.deleted_count == 1:
         raise HTTPException(status_code=404, detail=f'id: {id} is not on db !.')

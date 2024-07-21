@@ -1,4 +1,4 @@
-from pydantic import ConfigDict, BaseModel, Field, EmailStr
+from pydantic import ConfigDict, BaseModel, Field
 from pydantic.functional_validators import BeforeValidator
 import os
 from typing import Optional, List
@@ -9,7 +9,7 @@ PyObjectId = Annotated[str, BeforeValidator(str)]
 
 class prod_req(BaseModel):
     name: str
-    price: int
+    price: int = Field(ge=0, lt=500, default=1)
     image_url: str
 
     model_config = ConfigDict(

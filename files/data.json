@@ -1,0 +1,74 @@
+[
+    {
+        "_id": 1,
+        "name": "Dog",
+        "price": 79,
+        "image_url": "Product_01.jpg"
+    },
+    {
+        "_id": 2,
+        "name": "Dinosaur",
+        "price": 39,
+        "image_url": "Product_02.jpg"
+    },
+    {
+        "_id": 3,
+        "name": "Iguana",
+        "price": 49,
+        "image_url": "Product_03.jpg"
+    },
+    {
+        "_id": 4,
+        "name": "Bird",
+        "price": 89,
+        "image_url": "Product_04.jpg"
+    },
+    {
+        "_id": 5,
+        "name": "Tiger",
+        "price": 79,
+        "image_url": "Product_05.jpg"
+    },
+    {
+        "_id": 6,
+        "name": "Cat",
+        "price": 19,
+        "image_url": "Product_06.jpg"
+    },
+    {
+        "_id": 7,
+        "name": "Lion",
+        "price": 29,
+        "image_url": "Product_07.jpg"
+    },
+    {
+        "_id": 8,
+        "name": "Owl",
+        "price": 49,
+        "image_url": "Product_08.jpg"
+    },
+    {
+        "_id": 9,
+        "name": "Cat 2",
+        "price": 79,
+        "image_url": "Product_09.jpg"
+    },
+    {
+        "_id": 10,
+        "name": "Deer Stag",
+        "price": 99,
+        "image_url": "Product_10.jpg"
+    },
+    {
+        "_id": 11,
+        "name": "Elephant",
+        "price": 119,
+        "image_url": "Product_11.jpg"
+    },
+    {
+        "_id": 12,
+        "name": "Dog 2",
+        "price": 109,
+        "image_url": "Product_12.jpg"
+    }
+]

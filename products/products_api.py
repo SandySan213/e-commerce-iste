@@ -1,5 +1,5 @@
 from fastapi import APIRouter, HTTPException, status
-from serverFiles.database import PROD_COL, CARTS
+from serverFiles.database import PROD_COL
 from serverFiles import schemas
 from bson import ObjectId
 from typing import List
@@ -11,7 +11,6 @@ prod_api = APIRouter(prefix='/prod', tags=['products'])
 @prod_api.get('/products', response_model=List[schemas.prod_res])
 async def get_all_products():
 
-
     products_list = []
 
     async for collection in PROD_COL.find():
@@ -22,14 +21,14 @@ async def get_all_products():
 
 @prod_api.get('/products/{id}', response_model=schemas.prod_res)
 async def get_products_by_id(id: str):
-    try:
-        ObjectId(id)
+    # try:
+    #     ObjectId(id)
 
-    except Exception as e:
-        raise HTTPException(status_code=400, detail=f'Provided id: {id} is a primary key !.')
+    # except Exception as e:
+    #     raise HTTPException(status_code=400, detail=f'Provided id: {id} is a primary key !.')
 
     res = await PROD_COL.find_one({
-        '_id' : ObjectId(id)
+        '_id' : id
     })
     
     if not res:
@@ -56,15 +55,15 @@ async def create_product(data: schemas.prod_req):
 async def create_product(data: schemas.prod_req, id: str):
     inp_data = data.model_dump(exclude_unset=True)
 
-    try:
-        ObjectId(id)
+    # try:
+    #     ObjectId(id)
 
-    except Exception as e:
-        raise HTTPException(status_code=400, detail=f'Provided id: {id} is a primary key !.')
+    # except Exception as e:
+    #     raise HTTPException(status_code=400, detail=f'Provided id: {id} is a primary key !.')
 
 
     res = await PROD_COL.find_one_and_update(
-        {'_id':ObjectId(id)},
+        {'_id' : id},
         {'$set': inp_data}
     )
 
@@ -79,13 +78,13 @@ async def create_product(data: schemas.prod_req, id: str):
 
 @prod_api.delete('/products/{id}')
 async def delete_product(id: str):
-    try:
-        ObjectId(id)
+    # try:
+    #     ObjectId(id)
 
-    except Exception as e:
-        raise HTTPException(status_code=400, detail=f'Provided id: {id} is a primary key !.')
+    # except Exception as e:
+    #     raise HTTPException(status_code=400, detail=f'Provided id: {id} is a primary key !.')
     
-    res = await PROD_COL.delete_one({'_id':ObjectId(id)})
+    res = await PROD_COL.delete_one({'_id' : id})
 
     if not res.deleted_count == 1:
         raise HTTPException(status_code=404, detail=f'id: {id} is not on db !.')
