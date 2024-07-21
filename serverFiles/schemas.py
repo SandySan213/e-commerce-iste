@@ -7,7 +7,7 @@ from typing_extensions import Annotated
 PyObjectId = Annotated[str, BeforeValidator(str)]
 
 
-class products(BaseModel):
+class prod_req(BaseModel):
     id: Optional[PyObjectId] = Field(alias="_id", default=None)
     name: str
     price: int
@@ -17,3 +17,6 @@ class products(BaseModel):
         populate_by_name=True,
         arbitrary_types_allowed=True
     )
+
+class prod_res(prod_req):
+    id: Optional[PyObjectId] = Field(alias="_id", default=None)
