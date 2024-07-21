@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "rest api e-commerce"
+version = "0.1.0"
+description = "internal api created for e-commerce angular project"
+authors = ["SanndySan213 <sa742300@gmail.com>"]
+license = "rishi papa"
+readme = "README.md"
+package-mode=false
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = {extras = ["all"], version = "^0.111.1"}
+motor = "^3.5.1"
+python-dotenv = "^1.0.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
