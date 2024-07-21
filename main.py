@@ -5,7 +5,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 from products.products_api import prod_api
-
+from carts.carts_api import cart_api
 
 load_dotenv()
 
@@ -25,7 +25,8 @@ app.add_middleware(CORSMiddleware,
 )
 
 app.include_router(prod_api) # adding product apis
-
+app.include_router(cart_api)
+ 
  
 @app.get('/', include_in_schema=False) # simple greet
 async def greet():
@@ -33,4 +34,4 @@ async def greet():
 
 
 if __name__=='__main__':
-    uvicorn.run(app)
+    uvicorn.run(app, host='0.0.0.0', port=3000)

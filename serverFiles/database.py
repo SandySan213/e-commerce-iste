@@ -9,3 +9,4 @@ learning_db = client.get_database('learning')
 
 PROD_COL = learning_db.get_collection('products')
 
+CARTS = learning_db.get_collection('product_carts')

@@ -8,7 +8,6 @@ PyObjectId = Annotated[str, BeforeValidator(str)]
 
 
 class prod_req(BaseModel):
-    id: Optional[PyObjectId] = Field(alias="_id", default=None)
     name: str
     price: int
     image_url: str
@@ -20,3 +19,12 @@ class prod_req(BaseModel):
 
 class prod_res(prod_req):
     id: Optional[PyObjectId] = Field(alias="_id", default=None)
+
+
+class carts_req(prod_req):
+    pass
+
+
+
+class carts_res(prod_res):
+    pass
