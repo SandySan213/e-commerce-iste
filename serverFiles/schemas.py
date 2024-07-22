@@ -25,6 +25,5 @@ class carts_req(prod_req):
     pass
 
 
-
 class carts_res(prod_res):
     pass
